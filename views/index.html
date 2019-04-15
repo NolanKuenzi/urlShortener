@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Url Shortener</title>
+        <link href="style.css" rel="stylesheet" type="text/css">
+    </head>
+    <body>
+      <div id="container">
+        <h2>API Project: URL Shortener Microservice</h2>
+        <h3>User Story:</h3>
+        <ol>
+          <li>I can POST a URL to [project_url]/api/shorturl/new and I will receive a shortened URL in the JSON response.
+            Example : {"original_url":"www.google.com","short_url":1}</li><br>
+            <li>If I pass an invalid URL that doesn't follow the http(s)://www.example.com(/more/routes) format, the JSON response will contain an error like {"error":"invalid URL"}
+            HINT: to be sure that the submitted url points to a valid site you can use the function dns.lookup(host, cb) from the dns core module.</li><br>
+            <li>When I visit the shortened URL, it will redirect me to my original link.</li>
+        </ol>
+        <h3>Short URL Creation</h3><br>
+        <p>example: POST [project_url]/api/shorturl/new - https://www.google.com</p>
+        <div id="urlDivBox">
+            <form action="/api/shorturl/new" method="POST" target="_blank">
+              <span>URL to be shortened</span><input type="text" placeholder="https://www.freecodecamp.org/" name="inputUrl"></input><button type="submit">POST URL</button>
+            </form>
+        </div>
+        <h3>Example Usage:</h3>
+        <a>[this_project_url]/api/shorturl/3</a>
+        <h3>Will Redirect to:</h3>
+        <span>https://forum.freecodecamp.com</span><br>
+      </div>
+      <div id="footer">
+        <h4>Copyright © 2019 Nolan Kuenzi. Made for the freeCodeCamp Apis and Microservices Project - Request Header Parser Microservice.</h4>
+      </div> 
+    </body>
+</html>

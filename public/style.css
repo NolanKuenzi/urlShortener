@@ -1,0 +1,23 @@
+body {
+  text-align: center;
+  background-color: grey;
+}
+
+ol li {
+  list-style-position: inside;
+}
+
+#urlDivBox {
+  border: 2px solid black;
+  padding: 2em;
+  width: 35em;
+  margin: auto;
+}
+
+input {
+  margin-right: 0.5em;
+  margin-left: 0.5em;
+  width: 20em;
+  height: 2em;
+  text-align: center;
+}
