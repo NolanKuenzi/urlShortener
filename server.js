@@ -5,7 +5,6 @@ import cors from 'cors';
 import dns from 'dns';
 import Url from './models/url';
 import mongoose from 'mongoose';
-import password from 'pass.js';
 
 const app = express();
 
@@ -19,7 +18,7 @@ mongodb://localhost:27017/node-express-mongodb-server
 */
 
 const uri = process.env.MONGODB_URI;
-const db = mongoose.connect(`mongodb+srv://dbadmin:${password}@cluster0-exmln.mongodb.net/test?retryWrites=true`).catch((error) => { console.log(error); });
+const db = mongoose.connect(uri, { useNewUrlParser: true }).catch((error) => { console.log(error); });
 
 app.use(cors({optionSuccessStatus: 200}));
 app.use(express.static('public'));
