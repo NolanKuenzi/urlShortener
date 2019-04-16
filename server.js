@@ -1,11 +1,11 @@
-require('dotenv').config();
-//import 'dotenv/config';
+import 'dotenv/config';
 import express from 'express';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import dns from 'dns';
 import Url from './models/url';
 import mongoose from 'mongoose';
+import { url } from 'inspector';
 
 const app = express();
 
@@ -17,7 +17,8 @@ mongoose.Promise = global.Promise;
 mongoose.connect(process.env.DATABASE_URL);
 mongodb://localhost:27017/node-express-mongodb-server
 */
-const uri = process.env.DATABASE_URL;
+
+const uri = process.env.MONGODB_URI;
 const db = mongoose.connect(uri).catch((error) => { console.log(error); });
 
 app.use(cors({optionSuccessStatus: 200}));
@@ -68,24 +69,26 @@ app.post("/api/shorturl/new", function(req, res) {
   }); 
 });
 
-app.get("/api/shorturl/:number", function(req, res) {
+app.get("/api/shorturl/:number", function(req, res, next) {
   const regX = /^\d+$/;
-  if (regX.test(req.params.number) === false) {
+  if (regX.test(req.params.number) === true) {
+    next();
+  } else {
     res.json({"error":"Wrong Format"});
   }
-  Url.find({}, {_id: 0, __v: 0})
-  .exec(function(err, urls) {
-    if (err) {
-      res.json({"error":"No short url found for given input"});
-    } else {
-      const find = urls.filter(item => item.short_url == req.params.number.toString());
+}, function(req, res) {
+    Url.find({}, {_id: 0, __v: 0})
+    .exec(function(err, urls) {
+      if (err) {
+        res.status(404).json({"error":"No short url found for given input"});  
+      } 
+      const find = urls.filter(item => item.short_url.toString() === req.params.number.toString());
       if (find.length === 0) {
-        res.json({"error":"No short url found for given input"});
+        res.status(404).json({"error":"No short url found for given input"});
       } else {
         res.redirect(find[0].url);
       }
-    }
-  });
+    });
 });
 
 const port = process.env.PORT || 3000;
