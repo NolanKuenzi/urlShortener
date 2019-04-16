@@ -5,7 +5,6 @@ import cors from 'cors';
 import dns from 'dns';
 import Url from './models/url';
 import mongoose from 'mongoose';
-import { url } from 'inspector';
 
 const app = express();
 
