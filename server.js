@@ -5,19 +5,21 @@ import cors from 'cors';
 import dns from 'dns';
 import Url from './models/url';
 import mongoose from 'mongoose';
+import password from 'pass.js';
 
 const app = express();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-/*
+/* Connect local database 
+
 mongoose.Promise = global.Promise;
 mongoose.connect(process.env.DATABASE_URL);
-mongodb://localhost:27017/node-express-mongodb-server
+
 */
-// MONGODB_URI=mongodb+srv://dbadmin:4tttaaci4826@cluster0-exmln.mongodb.net/test?retryWrites=true
-const dev_db_url = "mongodb+srv://dbadmin:4tttaaci4826@cluster0-exmln.mongodb.net/test?retryWrites=true";
+
+const dev_db_url = `mongodb+srv://dbadmin${password}@cluster0-exmln.mongodb.net/test?retryWrites=true`;
 const uri = process.env.MONGODB_URI || dev_db_url;
 const db = mongoose.connect(uri, { useNewUrlParser: true }).catch((error) => { console.log(error); });
 
