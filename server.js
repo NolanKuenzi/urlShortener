@@ -5,7 +5,7 @@ import cors from 'cors';
 import dns from 'dns';
 import Url from './models/url';
 import mongoose from 'mongoose';
-import password from 'pass.js';
+import mongoDB_url from 'mongoDB_url.js';
 
 const app = express();
 
@@ -19,8 +19,7 @@ mongoose.connect(process.env.DATABASE_URL);
 
 */
 
-const dev_db_url = `mongodb+srv://dbadmin:${password}@cluster0-exmln.mongodb.net/test?retryWrites=true`;
-const uri = process.env.MONGODB_URI || dev_db_url;
+const uri = process.env.MONGODB_URI || mongoDB_url;
 const db = mongoose.connect(uri, { useNewUrlParser: true }).catch((error) => { console.log(error); });
 
 app.use(cors({optionSuccessStatus: 200}));
