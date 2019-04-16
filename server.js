@@ -73,7 +73,6 @@ app.get("/api/shorturl/:number", function(req, res) {
   if (regX.test(req.params.number) === false) {
     res.json({"error":"Wrong Format"});
   }
-
   Url.find({}, {_id: 0, __v: 0})
   .exec(function(err, urls) {
     if (err) {
@@ -87,7 +86,6 @@ app.get("/api/shorturl/:number", function(req, res) {
       }
     }
   });
-
 });
 
 const port = process.env.PORT || 3000;
