@@ -7,9 +7,11 @@
   "description": "API project for freeCodeCamp",
   "main": "server.js",
   "scripts": {
-    "start": "babel-node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
     "devstart": "nodemon --exec babel-node server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "heroku-postbuild": "npm install",
+    "start": "babel-node server.js"
+
   },
   "keywords": [],
   "author": "",
