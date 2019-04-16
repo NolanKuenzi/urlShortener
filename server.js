@@ -12,7 +12,7 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-/* Connect local database 
+/* Connect to local database:
 
 mongoose.Promise = global.Promise;
 mongoose.connect(process.env.DATABASE_URL);
