@@ -16,8 +16,9 @@ mongoose.Promise = global.Promise;
 mongoose.connect(process.env.DATABASE_URL);
 mongodb://localhost:27017/node-express-mongodb-server
 */
-
-const uri = process.env.MONGODB_URI;
+// MONGODB_URI=mongodb+srv://dbadmin:4tttaaci4826@cluster0-exmln.mongodb.net/test?retryWrites=true
+const dev_db_url = "mongodb+srv://dbadmin:4tttaaci4826@cluster0-exmln.mongodb.net/test?retryWrites=true";
+const uri = process.env.MONGODB_URI || dev_db_url;
 const db = mongoose.connect(uri, { useNewUrlParser: true }).catch((error) => { console.log(error); });
 
 app.use(cors({optionSuccessStatus: 200}));
