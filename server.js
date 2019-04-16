@@ -19,7 +19,7 @@ mongoose.connect(process.env.DATABASE_URL);
 
 */
 
-const dev_db_url = `mongodb+srv://dbadmin${password}@cluster0-exmln.mongodb.net/test?retryWrites=true`;
+const dev_db_url = `mongodb+srv://dbadmin:${password}@cluster0-exmln.mongodb.net/test?retryWrites=true`;
 const uri = process.env.MONGODB_URI || dev_db_url;
 const db = mongoose.connect(uri, { useNewUrlParser: true }).catch((error) => { console.log(error); });
 
