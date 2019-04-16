@@ -5,7 +5,7 @@ import cors from 'cors';
 import dns from 'dns';
 import Url from './models/url';
 import mongoose from 'mongoose';
-import mongoDB_url from 'mongoDB_url.js';
+import mongoUrl from './dbUrl.js';
 
 const app = express();
 
@@ -19,7 +19,7 @@ mongoose.connect(process.env.DATABASE_URL);
 
 */
 
-const uri = process.env.MONGODB_URI || mongoDB_url;
+const uri = process.env.MONGODB_URI || mongoUrl;
 const db = mongoose.connect(uri, { useNewUrlParser: true }).catch((error) => { console.log(error); });
 
 app.use(cors({optionSuccessStatus: 200}));
