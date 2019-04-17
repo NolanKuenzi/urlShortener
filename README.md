@@ -1,6 +1,6 @@
 # API Project: URL Shortener Microservice for freeCodeCamp
 
-### User Stories
+### User Stories (Written by freeCodeCamp Team)
 
 1. I can POST a URL to https://desolate-headland-97915.herokuapp.com/api/shorturl/new and I will receive a shortened URL in the JSON response. Example: {"original_url":"www.google.com","short_url":1}
 
