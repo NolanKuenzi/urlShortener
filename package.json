@@ -11,7 +11,6 @@
     "devstart": "nodemon --exec babel-node server.js",
     "heroku-postbuild": "npm install",
     "start": "babel-node server.js"
-
   },
   "keywords": [],
   "author": "",
