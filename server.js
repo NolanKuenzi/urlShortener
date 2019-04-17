@@ -12,13 +12,6 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-/* Connect to local database:
-
-mongoose.Promise = global.Promise;
-mongoose.connect(process.env.DATABASE_URL);
-
-*/
-
 const uri = process.env.MONGODB_URI || mongoUrl;
 const db = mongoose.connect(uri, { useNewUrlParser: true }).catch((error) => { console.log(error); });
 
