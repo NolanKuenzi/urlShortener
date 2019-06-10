@@ -11,7 +11,6 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-console.log(typeof process.env.DATABASE_URL);
 mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true }).catch((error) => { console.log(error); });
 
 app.use(cors({optionSuccessStatus: 200}));
