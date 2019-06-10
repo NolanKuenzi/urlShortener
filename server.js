@@ -5,15 +5,13 @@ import cors from 'cors';
 import dns from 'dns';
 import Url from './models/url';
 import mongoose from 'mongoose';
-import mongoUrl from './dbUrl.js';
 
 const app = express();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-const uri = process.env.MONGODB_URI || mongoUrl;
-const db = mongoose.connect(uri, { useNewUrlParser: true }).catch((error) => { console.log(error); });
+mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true }).catch((error) => { console.log(error); });
 
 app.use(cors({optionSuccessStatus: 200}));
 app.use(express.static('public'));
