@@ -1,5 +1,5 @@
 {
-  "name": "urlShortener",
+  "name": "url_shortener",
   "version": "1.0.0",
   "engines": {
     "node": "10.5.0"
