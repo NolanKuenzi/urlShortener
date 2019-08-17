@@ -37,7 +37,7 @@ app.post("/api/shorturl/new", function(req, res) {
   }
   const webAddress = dns.lookup(requestString, function(err, addresses) {
     if (addresses === null || addresses === undefined) {
-      res.json({"error":"Invalid URL"});
+      res.status(400).json({"error":"Invalid URL"});
     }
     Url.find({}, {_id: 0, __v: 0})
       .exec(function(err, urls) {
@@ -52,7 +52,7 @@ app.post("/api/shorturl/new", function(req, res) {
         const data = new Url({url: req.body.inputUrl, short_url: (numb + 1).toString()});
         data.save()
          .then(item => {
-           res.json({"original_url":req.body.inputUrl, "short_url": data.short_url});
+           res.status(200).json({"original_url":req.body.inputUrl, "short_url": data.short_url});
          })
          .catch(err => {
            res.status(400).send("unable to save to database");
